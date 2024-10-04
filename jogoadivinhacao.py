@@ -35,6 +35,4 @@ elif escolha_sistema > primeiro_palpite:
     else:
         print(f"Você não conseguiu. Palpite 1: {primeiro_palpite}, segundo palpite: {segundo_palpite}. O número do sistema é: {escolha_sistema}")
 
-else:
-    print("Parabéns, você acertou!")
 
