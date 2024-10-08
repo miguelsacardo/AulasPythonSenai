@@ -1,0 +1,234 @@
+#verificar ano bissexto
+input_ano = int(input("Informe um ano: "))
+
+#verificar se o ano é bissexto, ou seja, se é divisível por 4
+verificar_ano = input_ano % 4
+
+#exibir
+if verificar_ano == 0:
+    print(f"O ano {input_ano} é bissexto.")
+else:
+    print("O ano não é bissexto.")
+
+............................................................................................................................
+
+#calculadora de IMC
+peso_kg = float(input("Digite seu peso (em KG): "))
+altura = float(input("Digite a sua altura: "))
+
+#calculo do IMC
+calculo_imc = peso_kg / (altura**2)
+
+#exibir qual faixa o usuário está
+if calculo_imc < 18.5:
+    print(f"O seu IMC é {calculo_imc}. Baixo peso!")
+elif calculo_imc >= 18.5 and calculo_imc <= 24.9:
+    print(f"O seu IMC é {calculo_imc}. Peso normal!")
+elif calculo_imc >= 25 and calculo_imc <= 29.9:
+    print(f"O seu IMC é {calculo_imc}. Sobrepeso!")
+elif calculo_imc >= 30 and calculo_imc <= 34.9:
+    print(f"O seu IMC é {calculo_imc}. Obesidade!")
+elif calculo_imc >= 35 and calculo_imc <= 39.9:
+    print(f"O seu IMC é {calculo_imc}. Obesidade mórbida!")
+else:
+    print(f"O seu IMC é {calculo_imc}, maior que 40! Obesidade mórbida!")
+
+............................................................................................................................
+
+'''calcular desconto (quase a quantidade seja superior a 100, desconto de 10%
+caso contrário, 5%'''
+quantidade_produtos_adquirir = int(input("Digite a quantidade de produtos que você deseja adquirir: "))
+valor_unidade = float(input("Digite o valor da unidade dos produtos: "))
+
+#checar desconto
+if quantidade_produtos_adquirir > 100:
+    desconto_unidade = valor_unidade * 0.1 #calculando o desconto da unidade do produto (cada produto)
+    valor_total = quantidade_produtos_adquirir * valor_unidade #calculando o valor total da compra
+    desconto_final = valor_total * 0.90 #calculando o desconto total
+
+    #exibir valor inicial do produto, a quantidade solicitada, o desconto por unidade e o valor final a pagar.
+    print(f"O valor inicial do produto é: R${valor_unidade}, o desconto por unidade é R${desconto_unidade} e o valor final a pagar é R${desconto_final} ")
+
+else:
+    desconto_unidade = valor_unidade * 0.05  # calculando o desconto da unidade do produto (cada produto)
+    valor_total = quantidade_produtos_adquirir * valor_unidade  # calculando o valor total da compra
+    desconto_final = valor_total * 0.95  # calculando o desconto total
+
+    # exibir valor inicial do produto, a quantidade solicitada, o desconto por unidade e o valor final a pagar.
+    print(
+        f"O valor inicial do produto é: R${valor_unidade}, o desconto por unidade é R${desconto_unidade} e o valor final a pagar é R${desconto_final} ")
+
+............................................................................................................................
+
+#verificar voto obrigatório, facultativo e não eleitor
+idade_eleitor = int(input("Informe a sua idade: "))
+
+#verificar voto
+if idade_eleitor < 18:
+    print(f"Você não é eleitor. Idade {idade_eleitor}")
+elif idade_eleitor >= 18 and idade_eleitor < 71:
+    print(f"Seu voto é obrigatório. Idade {idade_eleitor}")
+elif idade_eleitor > 70:
+    print(f"Seu voto é facultativo. Idade {idade_eleitor}")
+else:
+    print(f"Informe um valor válido.")
+
+............................................................................................................................
+
+#determinar maior e menor idade entre três pessoas
+idade_um = int(input("Digite a primeira idade: "))
+idade_dois = int(input("Digite a segunda idade: "))
+idade_tres = int(input("Digite a terceira idade: "))
+
+#verificar maior e menor idade
+if idade_um < idade_dois:
+	maior_idade = idade_dois
+	menor_idade = idade_um
+else:
+	maior_idade = idade_um
+	menor_idade = idade_dois
+#comparar idade 3
+if idade_tres < maior_idade and idade_tres < menor_idade:
+	menor_idade = idade_tres
+elif idade_tres > maior_idade and idade_tres > menor_idade:
+	maior_idade = idade_tres
+
+print(f"maior idade {maior_idade} e menor idade {menor_idade}")
+
+............................................................................................................................
+
+#verificar se uma hora é válida
+input_hora = int(input("Insira uma hora: "))
+input_minutos = int(input("Insira um minuto: "))
+input_segundos = int(input("Insira um segundo: "))
+#verificar os valores
+if input_hora > 23 or input_hora < 0:
+	print(f"Uma hora não pode ser maior que 24 e nem menor que 0.")
+elif input_minutos > 59 or input_minutos < 0:
+	print(f"O minuto não pode ultrapassar 59 e não pode ser menor que zero.")
+elif input_segundos > 59 or input_segundos < 0:
+	print(f"Os segundos não podem ultrapassar 59 e nem serem menores que zero.")
+else:
+	print(f"O horário informado foi: {input_hora}:{input_minutos:02d}:{input_segundos:02d}")
+
+............................................................................................................................
+
+#converter notas em letras
+input_nota = float(input("Insira sua nota: "))
+#converter nota
+if input_nota > 10 or input_nota < 0:
+	print(f"A nota é inválida. Nota informada: {input_nota}")
+elif input_nota >= 9:
+	print(f"Sua nota é A. Nota informada: {input_nota}")
+elif input_nota >= 7 :
+	print(f"Sua nota é B. Nota informada: {input_nota}")
+elif input_nota >= 5 :
+	print(f"Sua nota é C. Nota informada: {input_nota}")
+elif input_nota >= 3 :
+	print(f"Sua nota é D. Nota informada: {input_nota}")
+elif input_nota >= 0 :
+	print(f"Sua nota é E. Nota informada: {input_nota}")
+
+............................................................................................................................
+
+#verificar se as medidas informadas são um quadrado ou um retângulo
+medida_um = float(input("Digite a primeira medida: "))
+medida_dois = float(input("Digite a segunda medida: "))
+medida_tres = float(input("Digite a terceira medida: "))
+medida_quatro = float(input("Digite a quarta medida: "))
+
+#armazena todas as medidas em uma lista
+medidas_geral = [medida_um,medida_dois,medida_tres,medida_quatro]
+#verificar se há números iguais
+if len(set(medidas_geral)) == 1:
+	print(f"As medidas informadas são iguais, então a figura geométrica é um quadrado.\n")
+	print(f"Medidas informadas: {medidas_geral}")
+elif medidas_geral[0] == medidas_geral[2] and medidas_geral[1] == medidas_geral[3] or medidas_geral[0] == medidas_geral[1] or medidas_geral[1] == medidas_geral[2]:
+	print(f"As medidas informadas podem formar um retângulo.")
+	print(f"Medidas informadas: {medidas_geral}")
+else:
+	print("As medidas não podem formar um quadrado nem um retângulo.")
+
+............................................................................................................................
+
+#calculadora simples
+primeiro_numero = float(input("Insira o primeiro número: "))
+segundo_numero = float(input("Insira o segundo número: "))
+operacao = input("Escolha uma operação: (+) Soma, (-) Subtração, (*) Multiplicação, (/) Divisão: ")
+#escolher operacao e calcular
+if operacao == "+":
+	resultado = primeiro_numero + segundo_numero
+elif operacao == "-":
+	resultado = primeiro_numero - segundo_numero
+elif operacao == "*":
+	resultado = primeiro_numero * segundo_numero
+elif operacao == "/":
+	resultado = primeiro_numero / segundo_numero
+else:
+	print("Informe uma operação válida.")
+print(f"O resultado da operação {primeiro_numero} {operacao} {segundo_numero} é igual a {resultado}")
+
+............................................................................................................................
+
+#calcular média com descarte de notas de três provas (descartar a menor nota)
+primeira_nota = float(input("Digite a primeira nota: "))
+segunda_nota = float(input("Digite a segunda nota: "))
+terceira_nota = float(input("Digite a terceira nota: "))
+#verificar a menor nota
+if primeira_nota < segunda_nota:
+	maior_nota = segunda_nota
+	menor_nota = primeira_nota
+else:
+	maior_nota = primeira_nota
+	menor_nota = segunda_nota
+#verificar a menor nota agora com a nota 3
+if terceira_nota < maior_nota and terceira_nota < menor_nota:
+	menor_nota = terceira_nota
+elif terceira_nota > maior_nota and terceira_nota > menor_nota:
+	maior_nota = terceira_nota
+#calcular a média excluindo o valor
+if primeira_nota == menor_nota:
+	media = (segunda_nota + terceira_nota)/2
+elif segunda_nota == menor_nota:
+	media = (primeira_nota + terceira_nota)/2
+else:
+	media = (primeira_nota + segunda_nota)/2
+#exibir ao usuário
+print(f"O resultado da média é: {media}")
+print(f"A nota excluída foi: {menor_nota}")
+
+............................................................................................................................
+
+#jogo de adivinhação onde o porgrama escolhe um numero entre 1 a 10 e o jogador deve acertar com dicas
+#importação de bibliotecas
+import random
+#sistema escolhe um número entre 1 a 10
+escolha_sistema = random.randint(1,10)
+#primeiro palpite do jogador
+primeiro_palpite = int(input("Escreva seu primeiro palpite: "))
+
+#dicas do sistema ou acerto
+if escolha_sistema < primeiro_palpite:
+	print("O número do sistema é MENOR que seu palpite.")
+	# segundo palpite do jogador
+	segundo_palpite = int(input("Escreva seu segundo palpite: "))
+	# verificação do sistema final
+	if segundo_palpite == escolha_sistema:
+		print("Parabéns! Você conseguiu!")
+	else:
+		print(f"Você não conseguiu. Palpite 1: {primeiro_palpite}, segundo palpite: {segundo_palpite}. O número do sistema é: {escolha_sistema}")
+elif escolha_sistema > primeiro_palpite:
+	print("O número do sistema é MAIOR que seu palpite.")
+	# segundo palpite do jogador
+	segundo_palpite = int(input("Escreva seu segundo palpite: "))
+	# verificação do sistema final
+	if segundo_palpite == escolha_sistema:
+		print("Parabéns! Você conseguiu!")
+	else:
+		print(f"Você não conseguiu. Palpite 1: {primeiro_palpite}, segundo palpite: {segundo_palpite}. O número do sistema é: {escolha_sistema}")
+
+
+
+
+
+

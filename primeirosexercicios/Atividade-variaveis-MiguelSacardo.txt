@@ -1,0 +1,35 @@
+#1. Declare uma variável pi constante e atribua o valor da constante π (pi) a ela e o exiba na tela.
+PI = 3.14 #variavel constante
+print(f"Número de Pi: {PI}") #exibindo a variável
+
+#2. Declare uma variável nome e solicite que o usuário digite o nome e exiba-o na tela.
+nome = input("Digite o seu nome: \n") #declaração de variável e solicitação para o usuário escrever o nome
+print(f"Imprimir o nome: {nome}\n") #exibindo a variável "Nome" na tela
+
+#3. Declare duas variáveis “primeiro_nome” e “sobrenome”. Concatene as variáveis em uma terceira variável “nome_completo” e exiba-o na tela.
+primeiro_nome = input("Digite seu nome: \n") #variavel recebendo o nome
+sobrenome = input("Digite seu sobrenome: \n") #variável recebendo o sobrenome
+
+nome_completo = f"{primeiro_nome} {sobrenome}\n" #concatenação
+print(f"Seu nome completo é: {nome_completo}") #exibindo nome completo
+
+#4. Declare duas variáveis a e b, e peça valores inteiros a elas. Realize a troca de conteúdo entre a e b. Exiba os valores antes da troca e depois da troca.
+a = input("Digite um número inteiro: \n") #pedindo o valor da variável A
+b = input("Digite mais um número inteiro: \n") #pedindo o valor da variável B
+print(f"O valor de 'a' antes da troca é {a} e o valor de 'b' antes da troca é {b}\n") #imprimindo o valor antes da troca
+
+temporario = a #armazenando o valor de "a" em uma variável
+a = b #variável A recebe o valor da variável B
+b = temporario #variável B recebe o valor que foi salvo na variável temporária
+print(f"O valor trocado de 'a' é {a} e o valor trocado de 'b' é {b}\n")
+
+#5. Declare duas variáveis: “saldo” e “dívida”. Solicite que o usuário insira os valores e exiba-os na tela.
+saldo = input("Digite seu saldo: ") #declaração da variável saldo
+divida = input("Digite sua dívida: ") #declaração da variável dívida
+print(f"Seu saldo é R${saldo} e sua dívida é R${divida} \n") #exibindo o valor dos dois na tela
+
+#6. Crie duas variáveis, nome e idade, e peça valores a elas. Em seguida, utilize uma f-string para exibir uma saudação personalizada que inclua o nome e a idade da pessoa.
+_nome = input("Digite seu nome: ") #declaracao da variável nome
+idade = input("Digite sua idade: ") #declaração da variável idade
+idadestr = str(idade) #convertendo idade para string
+print("Olá! Me chamo",_nome,"e tenho",idade,"ano(s) de idade! ") #exibindo na tela
