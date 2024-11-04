@@ -48,20 +48,25 @@ while True:
        if estoque == 0:
            print("Você não tem produtos para vender!")
        else:
-           quantidadeVenda = int(input("Quantos produtos você deseja vender?"))
+           quantidadeVenda = int(input("Quantos produtos você deseja vender?\n"))
 
            if quantidadeVenda > estoque:
-               print("Você não possui essa quantia de produtos no estoque!")
+               print("Você não possui essa quantia de produtos no estoque!\n")
+           elif quantidadeVenda < 0:
+               print("Informe um valor válido!")
            else:
-               for i in range(quantidadeVenda):
-                   print(i)
+               for produtos in range(quantidadeVenda):
+                   estoque -= 1
+                   print(f"={estoque}")
 
 
     elif escolhaUsuario == 3:
         #verificar estoque
-        print(f"Você possui atualmente um estoque com {estoque} produto(s)")
+        print(f"Você possui atualmente um estoque com {estoque} produto(s)\n")
     elif escolhaUsuario == 4:
         print("O programa foi parado.")
         break
+    else:
+        print("Escolha uma opção válida!\n")
 
 
