@@ -94,6 +94,8 @@ class GerenciadorFinanceiro:
                     print("Não é possível realizar a transfêrencia pois seu saldo é zero!")
                 elif valorTransferencia > ids[1].saldo:
                     print("Você não possui essa quantia para fazer transferência!")
+                elif id_destino not in self.contas:
+                    print("Informe um ID de destino que exista!")
                 else:
                     #o valor de transferencia deve fazer um decrescimo do saldo de origem
                     ids[1].saldo -= valorTransferencia
@@ -177,15 +179,15 @@ while True:
             #faz a verificação do tipo de conta do usuário
             if tipoConta == "P":
                 tipoConta = "Poupança"
-                aaa = gerenciador_financeiro.criar_conta(idConta, tipoConta)
+                contaUsuario = gerenciador_financeiro.criar_conta(idConta, tipoConta)
             elif tipoConta == "C":
                 tipoConta = "Corrente"
-                aaa = gerenciador_financeiro.criar_conta(idConta, tipoConta)
+                contaUsuario = gerenciador_financeiro.criar_conta(idConta, tipoConta)
             else:
                 print("Informe um tipo válido de conta.")
             
             #print de teste
-            print(aaa)
+            print(contaUsuario)
 
             print("\n", "="*100, "\n")
 
