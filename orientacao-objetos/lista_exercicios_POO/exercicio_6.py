@@ -66,6 +66,8 @@ class GerenciadorFinanceiro:
 
                 if ids[1].saldo == 0:
                     print("Operação bloqueada! Seu saldo é zero e ficará negativo!")
+                elif valorSaque > ids[1].saldo:
+                    print("Operação bloqueada! Valor de saque é maior que seu saldo!")
                 else:
                     #faz o decréscimo no saldo
                     ids[1].saldo -= valorSaque
@@ -74,7 +76,7 @@ class GerenciadorFinanceiro:
                     #registra a transação no histórico
                     ids[1].historico_transacoes.append(valorSaque)
 
-                    #printa testesn(para ver se está funcionando)
+                    #printa testes (para ver se está funcionando)
                     print(f"Seu histórico atual é: {ids[1].historico_transacoes}")
                     print("O tipo da sua conta é: ",ids[1].tipo_conta)
                     print(f"Seu saldo é {ids[1].saldo}")
@@ -99,7 +101,7 @@ class GerenciadorFinanceiro:
                     #registra essa transação no histórico
                     ids[1].historico_transacoes.append(valorTransferencia)
 
-                    print(f"COnta origem: {ids[0]}")
+                    print(f"Conta origem: {ids[0]}")
                     print(f"Saldo atual origem {ids[1].saldo}")
 
                     #encontra o ID de destino
@@ -112,7 +114,8 @@ class GerenciadorFinanceiro:
                             #registra o recebimento no histórico
                             idsDestino[1].historico_transacoes.append(valorTransferencia)
 
-                            print(f"COnta destino: {idsDestino[0]}")
+                            #print testes
+                            print(f"Conta destino: {idsDestino[0]}")
                             print(f"Saldo destino {idsDestino[1].saldo}")
 
 #Método que consulta extrato -> mostra o histórico e saldo atual
@@ -125,8 +128,26 @@ class GerenciadorFinanceiro:
                 print(f"Histórico de transações: {ids[1].historico_transacoes}")
 
                 #mostra o saldo atual
-                print(f"Saldo atual: {ids[1].saldo}")
+                print(f"Saldo atual: R${ids[1].saldo}")
 
+#método que calcula juros simples fixo de uma conta que seja do tipo "poupança"
+    def calcular_juros(self, id_conta):
+
+        #procura a conta
+        for ids in self.contas.items():
+            if id_conta == ids[0]:
+
+                #verifica se o tipoConta é "poupança"
+                if ids[1].tipo_conta == "Poupança":
+                    #calculo de juros simples -> usando 0,44% ao mês
+                    jurosSimples = ids[1].saldo * 0.0044 * 12
+                    ids[1].saldo += jurosSimples
+
+                    #retorna os juros
+                    return round(ids[1].saldo, 2)
+                else:
+                    #caso a conta não for poupança
+                    print("A conta deve ser poupança para ser feito o calculo de Juros!")
 
 #criação da classe Conta
 class Conta:
@@ -144,7 +165,7 @@ gerenciador_financeiro = GerenciadorFinanceiro()
 while True:
 
     #acesso do usuário
-    acessoUsuario = int(input("Escolha uma opção\n[1]Criar conta\n[2]Depósito\n[3]Sacar\n[4]Transferência\n[5]Consultar Extrato\n"))
+    acessoUsuario = int(input("Escolha uma opção\n[1]Criar conta\n[2]Depósito\n[3]Sacar\n[4]Transferência\n[5]Consultar Extrato\n[6]Calcular Juros Simples\n[7]Sair\nOpção: "))
 
     match acessoUsuario:
         case 1:
@@ -217,3 +238,35 @@ while True:
             gerenciador_financeiro.consultar_extrato(idConta)
 
             print("\n", "="*100, "\n")
+
+        case 6:
+            print("\n", "="*100, "\n")
+
+            #id da conta
+            idConta = int(input("Informe o ID da sua conta POUPANÇA para ter os juros aplicados: "))
+
+            rendimento = gerenciador_financeiro.calcular_juros(idConta)
+
+            if rendimento == None:
+                print("Seu Juros não foi calculado.")
+            else:
+                #calculo de juros
+                print(f"Ao longo de 12 meses, com uma taxa de 0,44% de juros ao mês, seu saldo agora é: R${rendimento}")
+
+            print("\n", "="*100, "\n")
+
+        case 7:
+            break
+        case _:
+            print("\n", "="*100, "\n")
+            print("Informe uma opção válida!")
+            print("\n", "="*100, "\n")
+
+
+#o segredo para a realização deste exercicio está no fato de que a instancia de conta é jogada como valor
+#para cada ID no dicionário, ficando por exemplo 1: Objeto Conta
+#assim, cada ID tem seu proprio objeto conta e conseguimos acessar seus atributos únicos para cada ID.
+
+#melhorias -> percebe-se que nas funções, muitas delas devem procurar a conta com base no id. Então poderia pensar
+#em colocar essa busca de conta em uma função e chamá-la quano necessário, fazerndo assim a reutilização do 
+#código.
