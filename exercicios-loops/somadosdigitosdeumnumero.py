@@ -1,10 +1,16 @@
 '''Exibir a soma dos dígitos de um número fornecido pelo usuário
  usando um loop for.'''
 
-inputNumero = int(input("Digite um número: "))
+#pede um número em formato de str para poder ser interado
+inputNumero = str(input("Digite um número: "))
+lista_digito = []
 
-numeroString = str(inputNumero)
+for i in inputNumero:
 
-incrementador = 0
-for i in numeroString:
-    numeroInt = int(numeroString)
+    #joga os digitos em uma lista
+    lista_digito.append(int(i))
+
+#soma dos digitos
+print(f"A soma dos digitos desse número é : {sum(lista_digito)}")
+    
+    
